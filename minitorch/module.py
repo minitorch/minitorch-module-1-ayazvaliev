@@ -58,7 +58,7 @@ class Module:
             The name and `Parameter` of each ancestor parameter.
         """
         # TODO: Implement for Task 0.4.
-        res_list = []
+        res_list: list[Tuple[str, Parameter]] = []
 
         def rec(
             module: Module, prefix: str, res_list: list[tuple[str, Parameter]]
@@ -73,7 +73,7 @@ class Module:
 
     def parameters(self) -> Sequence[Parameter]:
         "Enumerate over all the parameters of this module and its descendents."
-        res_list = []
+        res_list: list[Parameter] = []
 
         def rec(module: Module, res_list: list[Parameter]) -> None:
             res_list += list(module._parameters.values())

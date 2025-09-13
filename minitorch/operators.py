@@ -38,9 +38,9 @@ def lt(x: float, y: float) -> float:
     "$f(x) =$ 1.0 if x is less than y else 0.0"
     # TODO: Implement for Task 0.1.
     if x < y:
-        return 1
+        return 1.0
     else:
-        return 0
+        return 0.0
 
 
 def eq(x: float, y: float) -> float:
@@ -92,7 +92,7 @@ def relu(x: float) -> float:
     if x > 0:
         return x
     else:
-        return 0
+        return 0.0
 
 
 EPS = 1e-6
@@ -132,7 +132,7 @@ def relu_back(x: float, d: float) -> float:
     if x > 0:
         return d
     else:
-        return 0
+        return 0.0
 
 
 # ## Task 0.3

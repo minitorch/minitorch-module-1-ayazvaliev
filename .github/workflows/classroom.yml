@@ -13,6 +13,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8.20'
+
     - name: Setup
       id: setup
       uses: classroom-resources/autograding-command-grader@v1

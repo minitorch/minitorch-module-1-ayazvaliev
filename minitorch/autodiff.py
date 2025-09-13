@@ -67,10 +67,13 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     topsorted = []
     visited = set()
 
-    def dfs(scalar: Variable):
+    def dfs(scalar: Variable) -> None:
         visited.add(scalar.unique_id)
-        assert getattr(scalar, "history", None) is not None
-        for child_scalar in scalar.history.inputs:
+        history = getattr(scalar, "history", None)
+        assert history is not None
+        inputs = getattr(history, "inputs", None)
+        assert inputs is not None
+        for child_scalar in inputs:
             if child_scalar.unique_id not in visited:
                 dfs(child_scalar)
         topsorted.append(scalar)
@@ -90,7 +93,8 @@ def backpropagate(variable: Variable, deriv: Any) -> None:
 
     No return. Should write to its results to the derivative values of each leaf through `accumulate_derivative`.
     """
-    if variable.history is None:
+    history = getattr(variable, "history", None)
+    if history is None:
         return
     for processed_scalar, derivative in variable.chain_rule(deriv):
         if processed_scalar.is_leaf():
