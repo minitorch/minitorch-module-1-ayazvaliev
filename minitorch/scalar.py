@@ -161,6 +161,7 @@ class Scalar:
         h = self.history
         assert h is not None
         assert h.ctx is not None
+        assert h.last_fn is not None
 
         return [
             (scalar, derivative)

@@ -211,7 +211,7 @@ def reduce(
     def reduce_fn(ls: Iterable[float]) -> float:
         ls_iter = iter(ls)
 
-        def rec(ls_iter: Iterator[float]):
+        def rec(ls_iter: Iterator[float]) -> float:
             try:
                 cur_x = next(ls_iter)
                 return fn(cur_x, rec(ls_iter))
